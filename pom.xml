@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.m2acsi</groupId>
-	<artifactId>oauth-service</artifactId>
+	<artifactId>ProjetRestOAuth</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>oauth-service</name>
+	<name>ProjetRestOAuth</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
