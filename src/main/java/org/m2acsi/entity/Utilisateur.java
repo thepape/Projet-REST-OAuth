@@ -80,6 +80,11 @@ public class Utilisateur {
         return active;
     }
     
+    /**
+     * Ajoute un role a un utilisateur. Cette methode s'occupe d'ajouter l'utilisateur au role
+     * @param role
+     * @return
+     */
     public boolean addRole(Role role){
     	if(!this.roles.contains(role)){
     		this.roles.add(role);
@@ -90,6 +95,11 @@ public class Utilisateur {
     	return false;
     }
     
+    /**
+     * retire un role d'un utilisateur. Cette methode s'occupe de retirer egalement l'utilisateur du role
+     * @param role
+     * @return
+     */
     public boolean removeRole(Role role){
     	if(this.roles.contains(role)){
     		this.roles.remove(role);
