@@ -21,35 +21,3 @@ public class OauthServiceApplication {
 		SpringApplication.run(OauthServiceApplication.class, args);
 	}
 }
-
-/*
-
-@Component
-class AccountCLR implements CommandLineRunner {
-
-	
-    private UtilisateurRepository utilisateursRepository;
-    private RoleRepository roleRepository;
-
-    @Autowired
-    public void AccountCLR(UtilisateurRepository accountRepository) {
-        this.utilisateursRepository = accountRepository;
-    }
-    
-    @Autowired
-    public void rolesCLR(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
-
-    @Override
-    public void run(String... strings) throws Exception {
-        Utilisateur u1 = new Utilisateur("romain","password", true);
-        Role r1 = new Role("admin");
-        
-        u1.addRole(r1);
-        
-        this.utilisateursRepository.save(u1);
-        this.roleRepository.save(r1);
-    }
-}
-*/
