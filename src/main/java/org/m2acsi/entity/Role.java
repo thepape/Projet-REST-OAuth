@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -24,6 +28,12 @@ public class Role {
 	 @ManyToMany(mappedBy="roles")
 	 private List<Utilisateur> utilisateurs;
 	 
+	 @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	    @JoinTable(name = "Role_Privilege",
+	    	joinColumns=@JoinColumn(name="id_role"),
+	    	inverseJoinColumns=@JoinColumn(name="id_privilege"))
+	   	private List<Privilege> privileges;
+	 
 	 public Role(){
 		 super();
 		 
@@ -38,6 +48,7 @@ public class Role {
 	 private void init(){
 		 this.id = UUID.randomUUID().toString();
 		 this.utilisateurs = new ArrayList<Utilisateur>();
+		 this.privileges = new ArrayList<Privilege>();
 	 }
 
 	public String getId() {
@@ -58,6 +69,9 @@ public class Role {
 		return false;
 	}
 	
+	/**
+	 * ne doit pas etre appele en dehors de la classe Utilisateur.
+	 */
 	protected boolean addUtilisateur(Utilisateur user){
     	if(!this.utilisateurs.contains(user)){
     		this.utilisateurs.add(user);
@@ -67,6 +81,9 @@ public class Role {
     	return false;
     }
     
+	/**
+	 * ne doit pas etre appele en dehors de la classe Utilisateur.
+	 */
     protected boolean removeUtilisateur(Utilisateur user){
     	if(this.utilisateurs.contains(user)){
     		this.utilisateurs.remove(user);
@@ -75,4 +92,10 @@ public class Role {
     	
     	return false;
     }
+
+	public List<Privilege> getPrivileges() {
+		return privileges;
+	}
+    
+    
 }
